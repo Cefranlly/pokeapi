@@ -1,0 +1,63 @@
+{
+	"info": {
+		"_postman_id": "6c464a3a-a037-4ea2-b786-45e809e1ebab",
+		"name": "pokemonAPI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "get-pokemons",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8002/?q&limit=100&offset=0",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8002",
+					"path": [
+						""
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": null
+						},
+						{
+							"key": "limit",
+							"value": "100"
+						},
+						{
+							"key": "offset",
+							"value": "0"
+						}
+					]
+				},
+				"description": "Request para consultar lista de pokemons"
+			},
+			"response": []
+		},
+		{
+			"name": "get-pokemon-by-name",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8002/ditto/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8002",
+					"path": [
+						""
+					]
+				},
+				"description": "Request para traer los datos de un pokemon"
+			},
+			"response": []
+		}
+	]
+}
