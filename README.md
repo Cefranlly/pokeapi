@@ -47,18 +47,22 @@ pokemon
 - Install [Python](https://www.python.org/downloads/)
 - [Clonar el proyecto](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository)
 - Ubicate en el root del proyecto y ejecuta el siguiente comando:
+  
     ``docker-compose up -d --build``
 
 ## How-to-run-it
 
 Debes ejecutar el siguiente comando para levantar la app:
+
 ``docker-compose up -d``
+
 Una vez este arriba la app, podes probar los endpoints usando [Postman](https://learning.postman.com/docs/getting-started/installation-and-updates/)
 y cargando la [colección](https://developer.ft.com/portal/docs-start-install-postman-and-import-request-collection)
 
 ## How-to-test
 
 Al tener instalado el pytest y haber generado los modulos de pruebas, puedes correr:
+
 ``docker-compose exec web pytest .``
 
 Una vez levanta la App, conoce mas de los endpoints en [docs](http://localhost:8002/docs)
