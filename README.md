@@ -66,6 +66,8 @@ y cargando la [colección](https://developer.ft.com/portal/docs-start-install-po
 API Resources:
 
 ```
+Obtener listado de pokemons
+
 GET /
 
 q: string -> posible nombre del pokemon
@@ -74,6 +76,8 @@ offset: integer -> rango de offset para la búsqueda
 ```
 
 ```
+Obtiene los datos de un pokemon por su nombre
+
 GET /{pokemon_name} 
 ```
 
