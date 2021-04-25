@@ -56,6 +56,10 @@ Debes ejecutar el siguiente comando para levantar la app:
 
 ``docker-compose up -d``
 
+Para "apagar" el servicio:
+
+``docker-compose -f docker-compose.yml stop``
+
 Una vez este arriba la app, podes probar los endpoints usando [Postman](https://learning.postman.com/docs/getting-started/installation-and-updates/)
 y cargando la [colección](https://developer.ft.com/portal/docs-start-install-postman-and-import-request-collection)
 

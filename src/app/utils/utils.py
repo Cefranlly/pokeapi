@@ -6,7 +6,7 @@ pokemon_keys = ['name', 'order', 'abilities', 'base_experience', 'forms','height
                 'moves', 'species', 'sprites', 'stats', 'types', 'weight']
 
 
-def build_api_url(name, resource: str = None):
+def build_api_url(resource: str = None):
     """
     Funcion para constuir la URL que será consultada para traer los datos
     :param name: criterio de nombre de busqueda de pokemon
@@ -14,8 +14,6 @@ def build_api_url(name, resource: str = None):
     :return: retorna la URL a ser consultada (pokeapi.co)
     """
     validate_resource(resource)
-    if name:
-        return '/'.join([BASE_URL, resource, name, ''])
     return '/'.join([BASE_URL, resource, ''])
 
 
@@ -30,7 +28,7 @@ def validate_resource(resource):
     return None
 
 
-def dict_pokemon_converter(pokemon):
+def dict_pokemon_converter(pokemon: dict):
     """
     Función para tratar con la respuesta de al API pokeapi.co para el resource /POKEMON/{pokemon_name}
     :param pokemon: dict retornado por el request a la API
@@ -55,3 +53,7 @@ def dict_pokemon_converter(pokemon):
     }
 
     return new_pokemon
+
+
+def extract_pokemon_data(pokemon: dict):
+    return dict(id=pokemon["id"], name=pokemon["name"], image=pokemon["sprites"]["back_default"])

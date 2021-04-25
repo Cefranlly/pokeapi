@@ -6,23 +6,28 @@ class APICall(object):
     """
     Class base para la llamada via requests de pokeapi.co
     """
-    def __init__(self, name: str, resource: str = 'pokemon'):
-        self.url = build_api_url(name, resource)
+    def __init__(self, resource: str = 'pokemon'):
+        self.url = build_api_url(resource)
         print("url: {}".format(self.url))
 
-    def call_api(self, **params):
+    def call_api(self, name: str = None, **kwargs):
         """
         Llamado a la API para buscar la información de pokemons siguiendo ciertos criterios de busqueda
-        :param params: parametros para querystring
+        :param name:
+        :param kwargs: parametros para querystring
         :return: retorna un json con la respuesta del request a la API
         """
-        if params:
-            response = requests.get(self.url, params=params)
+        url = ""
+        if name:
+            url = '/'.join([self.url, name, ''])
         else:
-            response = requests.get(self.url)
+            url = self.url
+
+        if kwargs:
+            response = requests.get(url, params=kwargs)
+        else:
+            response = requests.get(url)
 
         response.raise_for_status()
 
-        data = response.json()
-
-        return data
+        return response.json()

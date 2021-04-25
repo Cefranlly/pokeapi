@@ -22,10 +22,11 @@ class PokemonDetail(BaseModel):
     weight: int
 
 
-class Pokemon(BaseModel):
+class Pokemons(BaseModel):
     """
     Class con el objecto de datos base de respuesta de la API /
     """
-    id: int
-    name: str
-    image: str
+    total: int
+    limit: int
+    offset: int
+    data: List

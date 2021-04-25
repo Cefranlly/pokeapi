@@ -1,13 +1,13 @@
 from fastapi import APIRouter, HTTPException
-from app.api.models import PokemonDetail, Pokemon
+from app.api.models import PokemonDetail, Pokemons
 from typing import Optional, List
-from app.interface import get_pokemon_by_name as get_by_name, get_pokemons
+from app.interface import get_pokemon_by_name as get_by_name, get_all_pokemons as get_all
 
 router = APIRouter()
 
 
 # Pokemons route
-@router.get("/", response_model=List[Pokemon], status_code=200)
+@router.get("/", response_model=Pokemons, status_code=200)
 async def get_pokemons(q: Optional[str] = None, limit: Optional[int] = 10, offset: Optional[int] = 0):
     """
     Endpoint para busqueda de pokemons segun parametrias
@@ -16,8 +16,10 @@ async def get_pokemons(q: Optional[str] = None, limit: Optional[int] = 10, offse
     :param offset: rango de busqueda
     :return: Lista de pokemons
     """
-    pokemon_result = await get_pokemons(q, limit, offset)
-    raise HTTPException(status_code=404, detail="Pokemons endpoint DIDN'T FIND any match for your searching criteria!!!")
+    print("Get all pokemons!")
+    pokemon_result = get_all(q, limit, offset)
+    if not pokemon_result:
+        raise HTTPException(status_code=404, detail="Pokemons endpoint DIDN'T FIND any match for your searching criteria!!!")
     return pokemon_result
 
 
@@ -29,6 +31,7 @@ async def get_pokemon_by_name(pokemon_name: str):
     :param pokemon_name: Nombre del pokemon a buscar
     :return: Retorna los datos de un pokemon segun el nombre
     """
+    print("Get pokemon by name")
     pokemon_result = get_by_name(pokemon_name)
     if not pokemon_result:
         raise HTTPException(status_code=404, detail="Pokemon NOT FOUND!")
